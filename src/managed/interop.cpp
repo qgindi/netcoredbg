@@ -204,10 +204,11 @@ void Init(const std::string &coreClrPath)
         throw std::runtime_error("Can't find directory separator in string returned by GetExeAbsPath");
 
     std::string exeDir = exe.substr(0, dirSepIndex);
+    std::string appPaths = exeDir + "\\..;" + exeDir + "\\..\\..\\Roslyn"; //Au: let .NET find ..\ManagedPart.dll and ..\..\Roslyn\dlls
 
     const char *propertyValues[] = {tpaList.c_str(), // TRUSTED_PLATFORM_ASSEMBLIES
-                                    exeDir.c_str(), // APP_PATHS
-                                    exeDir.c_str(), // APP_NI_PATHS
+                                    appPaths.c_str(), // APP_PATHS
+                                    appPaths.c_str(), // APP_NI_PATHS
                                     clrDir.c_str(), // NATIVE_DLL_SEARCH_DIRECTORIES
                                     "UseLatestBehaviorWhenTFMNotSpecified"};  // AppDomainCompatSwitch
 
