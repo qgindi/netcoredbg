@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{77F3F057-887A-354F-A96B-FE25C914DA4B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>linenoise</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\code-lib\netcoredbg\build\third_party\linenoise-ng\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">linenoise.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">linenoise</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\code-lib\netcoredbg\build\third_party\linenoise-ng\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">linenoise.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">linenoise</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\code-lib\netcoredbg\build\third_party\linenoise-ng\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">linenoise.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">linenoise</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\code-lib\netcoredbg\build\third_party\linenoise-ng\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">linenoise.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">linenoise</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\third_party\linenoise-ng\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /d2Zi+ /Zm200 /ZH:SHA_256 /source-charset:utf-8 /homeparams</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4960;4961;4603;4627;4838;4456;4457;4458;4459;4091</DisableSpecificWarnings>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <StructMemberAlignment>8Bytes</StructMemberAlignment>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatSpecificWarningsAsErrors>4640</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UndefinePreprocessorDefinitions>_MT</UndefinePreprocessorDefinitions>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS=1;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS=1;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\third_party\linenoise-ng\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\third_party\linenoise-ng\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\third_party\linenoise-ng\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /d2Zi+ /Zm200 /ZH:SHA_256 /source-charset:utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4960;4961;4603;4627;4838;4456;4457;4458;4459;4091</DisableSpecificWarnings>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <StructMemberAlignment>8Bytes</StructMemberAlignment>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatSpecificWarningsAsErrors>4640</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UndefinePreprocessorDefinitions>_MT</UndefinePreprocessorDefinitions>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS=1;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS=1;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\third_party\linenoise-ng\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\third_party\linenoise-ng\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\third_party\linenoise-ng\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /d2Zi+ /Zm200 /ZH:SHA_256 /source-charset:utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4960;4961;4603;4627;4838;4456;4457;4458;4459;4091</DisableSpecificWarnings>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <StructMemberAlignment>8Bytes</StructMemberAlignment>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatSpecificWarningsAsErrors>4640</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UndefinePreprocessorDefinitions>_MT</UndefinePreprocessorDefinitions>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS=1;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS=1;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\third_party\linenoise-ng\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\third_party\linenoise-ng\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\third_party\linenoise-ng\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /d2Zi+ /Zm200 /ZH:SHA_256 /source-charset:utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4960;4961;4603;4627;4838;4456;4457;4458;4459;4091</DisableSpecificWarnings>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <StructMemberAlignment>8Bytes</StructMemberAlignment>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatSpecificWarningsAsErrors>4640</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UndefinePreprocessorDefinitions>_MT</UndefinePreprocessorDefinitions>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS=1;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS=1;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\third_party\linenoise-ng\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\third_party\linenoise-ng\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\code-lib\netcoredbg\third_party\linenoise-ng\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/code-lib/netcoredbg/third_party/linenoise-ng/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/code-lib/netcoredbg -BC:/code-lib/netcoredbg/build --check-stamp-file C:/code-lib/netcoredbg/build/third_party/linenoise-ng/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.28\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.28\Templates\CPackConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\code-lib\netcoredbg\build\third_party\linenoise-ng\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/code-lib/netcoredbg/third_party/linenoise-ng/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/code-lib/netcoredbg -BC:/code-lib/netcoredbg/build --check-stamp-file C:/code-lib/netcoredbg/build/third_party/linenoise-ng/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.28\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.28\Templates\CPackConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\code-lib\netcoredbg\build\third_party\linenoise-ng\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/code-lib/netcoredbg/third_party/linenoise-ng/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/code-lib/netcoredbg -BC:/code-lib/netcoredbg/build --check-stamp-file C:/code-lib/netcoredbg/build/third_party/linenoise-ng/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.28\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.28\Templates\CPackConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\code-lib\netcoredbg\build\third_party\linenoise-ng\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/code-lib/netcoredbg/third_party/linenoise-ng/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/code-lib/netcoredbg -BC:/code-lib/netcoredbg/build --check-stamp-file C:/code-lib/netcoredbg/build/third_party/linenoise-ng/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.28\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.28\Templates\CPackConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\code-lib\netcoredbg\build\third_party\linenoise-ng\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\code-lib\netcoredbg\third_party\linenoise-ng\src\ConvertUTF.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\third_party\linenoise-ng\src\linenoise.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\third_party\linenoise-ng\src\wcwidth.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\code-lib\netcoredbg\build\ZERO_CHECK.vcxproj">
+      <Project>{E325180B-D1EB-36E4-9ABD-A7A6A78B93B2}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

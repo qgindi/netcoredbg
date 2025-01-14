@@ -1,0 +1,777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5768C6C4-21AD-3E00-B1E5-4AB104CB9A68}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>netcoredbg</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\code-lib\netcoredbg\build\src\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">netcoredbg.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">netcoredbg</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\code-lib\netcoredbg\build\src\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">netcoredbg.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">netcoredbg</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\code-lib\netcoredbg\build\src\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">netcoredbg.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">netcoredbg</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\code-lib\netcoredbg\build\src\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">netcoredbg.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">netcoredbg</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\shim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\dlls\dbgshim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\..\native;C:\code-lib\netcoredbg\third_party;C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\src;C:\code-lib\netcoredbg\build\generated;C:\code-lib\netcoredbg\src\windows;C:\code-lib\netcoredbg\src\unix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /d2Zi+ /Zm200 /ZH:SHA_256 /source-charset:utf-8 /homeparams</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4960;4961;4603;4627;4838;4456;4457;4458;4459;4091</DisableSpecificWarnings>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <StructMemberAlignment>8Bytes</StructMemberAlignment>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatSpecificWarningsAsErrors>4640</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UndefinePreprocessorDefinitions>_MT</UndefinePreprocessorDefinitions>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_MIDL_USE_GUIDDEF_;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;LOG_TAG="NETCOREDBG";NOMINMAX;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_MIDL_USE_GUIDDEF_;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;LOG_TAG=\"NETCOREDBG\";NOMINMAX;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\shim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\dlls\dbgshim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\..\native;C:\code-lib\netcoredbg\third_party;C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\src;C:\code-lib\netcoredbg\build\generated;C:\code-lib\netcoredbg\src\windows;C:\code-lib\netcoredbg\src\unix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\shim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\dlls\dbgshim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\..\native;C:\code-lib\netcoredbg\third_party;C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\src;C:\code-lib\netcoredbg\build\generated;C:\code-lib\netcoredbg\src\windows;C:\code-lib\netcoredbg\src\unix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+cd C:\code-lib\netcoredbg\build\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch_nocreate generrmsg/bin/generrmsg.dll
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f obj/project.assets.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Link>
+      <AdditionalDependencies>Debug\corguids.lib;wsock32.lib;ws2_32.lib;..\third_party\linenoise-ng\Debug\linenoise.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/code-lib/netcoredbg/build/src/Debug/netcoredbg.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/code-lib/netcoredbg/build/src/Debug/netcoredbg.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\shim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\dlls\dbgshim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\..\native;C:\code-lib\netcoredbg\third_party;C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\src;C:\code-lib\netcoredbg\build\generated;C:\code-lib\netcoredbg\src\windows;C:\code-lib\netcoredbg\src\unix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /d2Zi+ /Zm200 /ZH:SHA_256 /source-charset:utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4960;4961;4603;4627;4838;4456;4457;4458;4459;4091</DisableSpecificWarnings>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <StructMemberAlignment>8Bytes</StructMemberAlignment>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatSpecificWarningsAsErrors>4640</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UndefinePreprocessorDefinitions>_MT</UndefinePreprocessorDefinitions>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_MIDL_USE_GUIDDEF_;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;LOG_TAG="NETCOREDBG";NOMINMAX;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_MIDL_USE_GUIDDEF_;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;LOG_TAG=\"NETCOREDBG\";NOMINMAX;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\shim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\dlls\dbgshim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\..\native;C:\code-lib\netcoredbg\third_party;C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\src;C:\code-lib\netcoredbg\build\generated;C:\code-lib\netcoredbg\src\windows;C:\code-lib\netcoredbg\src\unix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\shim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\dlls\dbgshim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\..\native;C:\code-lib\netcoredbg\third_party;C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\src;C:\code-lib\netcoredbg\build\generated;C:\code-lib\netcoredbg\src\windows;C:\code-lib\netcoredbg\src\unix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+cd C:\code-lib\netcoredbg\build\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch_nocreate generrmsg/bin/generrmsg.dll
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f obj/project.assets.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Link>
+      <AdditionalDependencies>Release\corguids.lib;wsock32.lib;ws2_32.lib;..\third_party\linenoise-ng\Release\linenoise.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/code-lib/netcoredbg/build/src/Release/netcoredbg.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/code-lib/netcoredbg/build/src/Release/netcoredbg.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\shim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\dlls\dbgshim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\..\native;C:\code-lib\netcoredbg\third_party;C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\src;C:\code-lib\netcoredbg\build\generated;C:\code-lib\netcoredbg\src\windows;C:\code-lib\netcoredbg\src\unix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /d2Zi+ /Zm200 /ZH:SHA_256 /source-charset:utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4960;4961;4603;4627;4838;4456;4457;4458;4459;4091</DisableSpecificWarnings>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <StructMemberAlignment>8Bytes</StructMemberAlignment>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatSpecificWarningsAsErrors>4640</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UndefinePreprocessorDefinitions>_MT</UndefinePreprocessorDefinitions>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_MIDL_USE_GUIDDEF_;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;LOG_TAG="NETCOREDBG";NOMINMAX;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_MIDL_USE_GUIDDEF_;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;LOG_TAG=\"NETCOREDBG\";NOMINMAX;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\shim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\dlls\dbgshim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\..\native;C:\code-lib\netcoredbg\third_party;C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\src;C:\code-lib\netcoredbg\build\generated;C:\code-lib\netcoredbg\src\windows;C:\code-lib\netcoredbg\src\unix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\shim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\dlls\dbgshim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\..\native;C:\code-lib\netcoredbg\third_party;C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\src;C:\code-lib\netcoredbg\build\generated;C:\code-lib\netcoredbg\src\windows;C:\code-lib\netcoredbg\src\unix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+cd C:\code-lib\netcoredbg\build\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch_nocreate generrmsg/bin/generrmsg.dll
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f obj/project.assets.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Link>
+      <AdditionalDependencies>MinSizeRel\corguids.lib;wsock32.lib;ws2_32.lib;..\third_party\linenoise-ng\MinSizeRel\linenoise.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/code-lib/netcoredbg/build/src/MinSizeRel/netcoredbg.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/code-lib/netcoredbg/build/src/MinSizeRel/netcoredbg.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\shim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\dlls\dbgshim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\..\native;C:\code-lib\netcoredbg\third_party;C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\src;C:\code-lib\netcoredbg\build\generated;C:\code-lib\netcoredbg\src\windows;C:\code-lib\netcoredbg\src\unix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /d2Zi+ /Zm200 /ZH:SHA_256 /source-charset:utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4960;4961;4603;4627;4838;4456;4457;4458;4459;4091</DisableSpecificWarnings>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <StructMemberAlignment>8Bytes</StructMemberAlignment>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatSpecificWarningsAsErrors>4640</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UndefinePreprocessorDefinitions>_MT</UndefinePreprocessorDefinitions>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_MIDL_USE_GUIDDEF_;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;LOG_TAG="NETCOREDBG";NOMINMAX;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_MIDL_USE_GUIDDEF_;_AMD64_;_WIN64;AMD64;BIT64=1;HOST_64BIT=1;HOST_AMD64;FEATURE_DEFAULT_INTERFACES=1;_TARGET_AMD64_=1;_TARGET_64BIT_=1;DBG_TARGET_64BIT=1;DBG_TARGET_AMD64=1;DBG_TARGET_WIN64=1;_BLD_CLR;DEBUGGING_SUPPORTED;PROFILING_SUPPORTED;_WIN32;WINVER=0x0602;_WIN32_WINNT=0x0602;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_WARNINGS;HOST_WINDOWS;EnC_SUPPORTED;FEATURE_APPDOMAIN_RESOURCE_MONITORING;FEATURE_APPX;FEATURE_ARRAYSTUB_AS_IL;FEATURE_MULTICASTSTUB_AS_IL;FEATURE_CODE_VERSIONING;FEATURE_COLLECTIBLE_TYPES;FEATURE_CLASSIC_COMINTEROP;FEATURE_COMINTEROP;FEATURE_COMINTEROP_APARTMENT_SUPPORT;FEATURE_COMINTEROP_UNMANAGED_ACTIVATION;FEATURE_COMINTEROP_WINRT_MANAGED_ACTIVATION;FEATURE_CORECLR;FEATURE_CORESYSTEM;FEATURE_CORRUPTING_EXCEPTIONS;FEATURE_EVENT_TRACE=1;FEATURE_PERFTRACING=1;FEATURE_HIJACK;FEATURE_ICASTABLE;FEATURE_INTEROP_DEBUGGING;FEATURE_ISYM_READER;FEATURE_JUMPSTAMP;FEATURE_LOADER_OPTIMIZATION;FEATURE_MANAGED_ETW;FEATURE_MANAGED_ETW_CHANNELS;FEATURE_MULTICOREJIT;FEATURE_PREJIT;FEATURE_READYTORUN;FEATURE_REJIT;FEATURE_STANDALONE_SN;FEATURE_STRONGNAME_DELAY_SIGNING_ALLOWED;FEATURE_STRONGNAME_MIGRATION;FEATURE_SVR_GC;FEATURE_SYMDIFF;FEATURE_TIERED_COMPILATION;UNIX_AMD64_ABI_ITF;FEATURE_USE_ASM_GC_WRITE_BARRIERS;FEATURE_USE_SOFTWARE_WRITE_WATCH_FOR_GC_HEAP;FEATURE_VERSIONING_LOG;FEATURE_WIN32_REGISTRY;FEATURE_LEGACYNETCF_DBG_HOST_CONTROL;FEATURE_WINDOWSPHONE;FEATURE_WINMD_RESILIENT;_SECURE_SCL=0;UNICODE;_UNICODE;LOG_TAG=\"NETCOREDBG\";NOMINMAX;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\shim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\dlls\dbgshim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\..\native;C:\code-lib\netcoredbg\third_party;C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\src;C:\code-lib\netcoredbg\build\generated;C:\code-lib\netcoredbg\src\windows;C:\code-lib\netcoredbg\src\unix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr;C:\code-lib\netcoredbg\.coreclr\src\coreclr\debug\shim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\dlls\dbgshim;C:\code-lib\netcoredbg\.coreclr\src\coreclr\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\hosts\inc;C:\code-lib\netcoredbg\.coreclr\src\coreclr\..\native;C:\code-lib\netcoredbg\third_party;C:\code-lib\netcoredbg\third_party\linenoise-ng\include;C:\code-lib\netcoredbg\src;C:\code-lib\netcoredbg\build\generated;C:\code-lib\netcoredbg\src\windows;C:\code-lib\netcoredbg\src\unix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message></Message>
+      <Command>setlocal
+cd C:\code-lib\netcoredbg\build\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch_nocreate generrmsg/bin/generrmsg.dll
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f obj/project.assets.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Link>
+      <AdditionalDependencies>RelWithDebInfo\corguids.lib;wsock32.lib;ws2_32.lib;..\third_party\linenoise-ng\RelWithDebInfo\linenoise.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/code-lib/netcoredbg/build/src/RelWithDebInfo/netcoredbg.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/code-lib/netcoredbg/build/src/RelWithDebInfo/netcoredbg.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\code-lib\netcoredbg\build\CMakeFiles\0411992436828dae6caf9d1d40e95493\generrmsg.csproj.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Creating new dotnet project</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\code-lib\netcoredbg\build\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E env DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NEW_LOCAL_SEARCH_FILE_ONLY=1 "C:/Program Files/dotnet/dotnet.exe" new console --force -n generrmsg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\code-lib\netcoredbg\build\src\generrmsg\generrmsg.csproj</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Creating new dotnet project</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd C:\code-lib\netcoredbg\build\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E env DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NEW_LOCAL_SEARCH_FILE_ONLY=1 "C:/Program Files/dotnet/dotnet.exe" new console --force -n generrmsg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\code-lib\netcoredbg\build\src\generrmsg\generrmsg.csproj</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Creating new dotnet project</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd C:\code-lib\netcoredbg\build\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E env DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NEW_LOCAL_SEARCH_FILE_ONLY=1 "C:/Program Files/dotnet/dotnet.exe" new console --force -n generrmsg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\code-lib\netcoredbg\build\src\generrmsg\generrmsg.csproj</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Creating new dotnet project</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd C:\code-lib\netcoredbg\build\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E env DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NEW_LOCAL_SEARCH_FILE_ONLY=1 "C:/Program Files/dotnet/dotnet.exe" new console --force -n generrmsg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\code-lib\netcoredbg\build\src\generrmsg\generrmsg.csproj</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\code-lib\netcoredbg\build\CMakeFiles\2950f4855829d2424174b9e417079295\generrmsg.dll.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compiling generrmsg/bin/generrmsg.dll</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\code-lib\netcoredbg\build\src\generrmsg
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/code-lib/netcoredbg/tools/generrmsg/GenErrMsg.cs Program.cs
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/code-lib/netcoredbg/tools/generrmsg/nuget.xml nuget.config
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" build -o bin/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\code-lib\netcoredbg\tools\generrmsg\GenErrMsg.cs;C:\code-lib\netcoredbg\build\src\generrmsg\generrmsg.csproj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\code-lib\netcoredbg\build\src\generrmsg\bin\generrmsg.dll</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compiling generrmsg/bin/generrmsg.dll</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd C:\code-lib\netcoredbg\build\src\generrmsg
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/code-lib/netcoredbg/tools/generrmsg/GenErrMsg.cs Program.cs
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/code-lib/netcoredbg/tools/generrmsg/nuget.xml nuget.config
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" build -o bin/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\code-lib\netcoredbg\tools\generrmsg\GenErrMsg.cs;C:\code-lib\netcoredbg\build\src\generrmsg\generrmsg.csproj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\code-lib\netcoredbg\build\src\generrmsg\bin\generrmsg.dll</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Compiling generrmsg/bin/generrmsg.dll</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd C:\code-lib\netcoredbg\build\src\generrmsg
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/code-lib/netcoredbg/tools/generrmsg/GenErrMsg.cs Program.cs
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/code-lib/netcoredbg/tools/generrmsg/nuget.xml nuget.config
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" build -o bin/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\code-lib\netcoredbg\tools\generrmsg\GenErrMsg.cs;C:\code-lib\netcoredbg\build\src\generrmsg\generrmsg.csproj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\code-lib\netcoredbg\build\src\generrmsg\bin\generrmsg.dll</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Compiling generrmsg/bin/generrmsg.dll</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd C:\code-lib\netcoredbg\build\src\generrmsg
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/code-lib/netcoredbg/tools/generrmsg/GenErrMsg.cs Program.cs
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/code-lib/netcoredbg/tools/generrmsg/nuget.xml nuget.config
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" build -o bin/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\code-lib\netcoredbg\tools\generrmsg\GenErrMsg.cs;C:\code-lib\netcoredbg\build\src\generrmsg\generrmsg.csproj;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\code-lib\netcoredbg\build\src\generrmsg\bin\generrmsg.dll</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\code-lib\netcoredbg\build\CMakeFiles\3ce93b579f191398380497f5743ef987\errormessage.cpp.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Extracting C:/code-lib/netcoredbg/.coreclr/src/coreclr/inc/corerror.xml</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\code-lib\netcoredbg\build\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" generrmsg/bin/generrmsg.dll C:/code-lib/netcoredbg/.coreclr/src/coreclr/inc/corerror.xml C:/code-lib/netcoredbg/build/src/errormessage.cpp C:/code-lib/netcoredbg/build/src/errormessage.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc\corerror.xml;C:\code-lib\netcoredbg\build\src\generrmsg\bin\generrmsg.dll;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\code-lib\netcoredbg\build\src\errormessage.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Extracting C:/code-lib/netcoredbg/.coreclr/src/coreclr/inc/corerror.xml</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd C:\code-lib\netcoredbg\build\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" generrmsg/bin/generrmsg.dll C:/code-lib/netcoredbg/.coreclr/src/coreclr/inc/corerror.xml C:/code-lib/netcoredbg/build/src/errormessage.cpp C:/code-lib/netcoredbg/build/src/errormessage.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc\corerror.xml;C:\code-lib\netcoredbg\build\src\generrmsg\bin\generrmsg.dll;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\code-lib\netcoredbg\build\src\errormessage.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Extracting C:/code-lib/netcoredbg/.coreclr/src/coreclr/inc/corerror.xml</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd C:\code-lib\netcoredbg\build\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" generrmsg/bin/generrmsg.dll C:/code-lib/netcoredbg/.coreclr/src/coreclr/inc/corerror.xml C:/code-lib/netcoredbg/build/src/errormessage.cpp C:/code-lib/netcoredbg/build/src/errormessage.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc\corerror.xml;C:\code-lib\netcoredbg\build\src\generrmsg\bin\generrmsg.dll;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\code-lib\netcoredbg\build\src\errormessage.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Extracting C:/code-lib/netcoredbg/.coreclr/src/coreclr/inc/corerror.xml</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd C:\code-lib\netcoredbg\build\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\dotnet\dotnet.exe" generrmsg/bin/generrmsg.dll C:/code-lib/netcoredbg/.coreclr/src/coreclr/inc/corerror.xml C:/code-lib/netcoredbg/build/src/errormessage.cpp C:/code-lib/netcoredbg/build/src/errormessage.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\code-lib\netcoredbg\.coreclr\src\coreclr\inc\corerror.xml;C:\code-lib\netcoredbg\build\src\generrmsg\bin\generrmsg.dll;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\code-lib\netcoredbg\build\src\errormessage.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\code-lib\netcoredbg\src\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/code-lib/netcoredbg/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/code-lib/netcoredbg -BC:/code-lib/netcoredbg/build --check-stamp-file C:/code-lib/netcoredbg/build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\code-lib\netcoredbg\build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/code-lib/netcoredbg/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/code-lib/netcoredbg -BC:/code-lib/netcoredbg/build --check-stamp-file C:/code-lib/netcoredbg/build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\code-lib\netcoredbg\build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/code-lib/netcoredbg/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/code-lib/netcoredbg -BC:/code-lib/netcoredbg/build --check-stamp-file C:/code-lib/netcoredbg/build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\code-lib\netcoredbg\build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/code-lib/netcoredbg/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/code-lib/netcoredbg -BC:/code-lib/netcoredbg/build --check-stamp-file C:/code-lib/netcoredbg/build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\code-lib\netcoredbg\build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\breakpoint_break.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\breakpoint_entry.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\breakpoint_hotreload.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\breakpoints_exception.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\breakpoints_func.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\breakpoints_line.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\breakpoints.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\breakpointutils.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\callbacksqueue.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\evalhelpers.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\evalstackmachine.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\evaluator.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\evalwaiter.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\evalutils.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\frames.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\hotreloadhelpers.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\managedcallback.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\manageddebugger.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\threads.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\stepper_async.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\stepper_simple.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\steppers.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\valueprint.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\variables.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\waitpid.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\interfaces\types.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\managed\interop.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\metadata\attributes.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\metadata\async_info.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\metadata\jmc.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\metadata\modules.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\metadata\modules_app_update.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\metadata\modules_sources.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\metadata\typeprinter.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\protocols\cliprotocol.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\protocols\escaped_string.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\protocols\protocol_utils.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\protocols\miprotocol.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\protocols\tokenizer.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\protocols\vscodeprotocol.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\protocols\sourcestorage.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\utf.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\build\src\errormessage.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\main.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\buildinfo.cpp">
+      <ScanSourceforModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ScanSourceforModuleDependencies>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(PreprocessorDefinitions);VERSION=3.1.2-1;BUILD_TYPE=Release;NETCOREDBG_VCS_INFO=83214c3;CORECLR_VCS_INFO=b704dce;OS_NAME=Windows;CPU_ARCH=x64;HOSTNAME=WIN11</PreprocessorDefinitions>
+      <ScanSourceforModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ScanSourceforModuleDependencies>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(PreprocessorDefinitions);VERSION=3.1.2-1;BUILD_TYPE=Release;NETCOREDBG_VCS_INFO=83214c3;CORECLR_VCS_INFO=b704dce;OS_NAME=Windows;CPU_ARCH=x64;HOSTNAME=WIN11</PreprocessorDefinitions>
+      <ScanSourceforModuleDependencies Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</ScanSourceforModuleDependencies>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(PreprocessorDefinitions);VERSION=3.1.2-1;BUILD_TYPE=Release;NETCOREDBG_VCS_INFO=83214c3;CORECLR_VCS_INFO=b704dce;OS_NAME=Windows;CPU_ARCH=x64;HOSTNAME=WIN11</PreprocessorDefinitions>
+      <ScanSourceforModuleDependencies Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</ScanSourceforModuleDependencies>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(PreprocessorDefinitions);VERSION=3.1.2-1;BUILD_TYPE=Release;NETCOREDBG_VCS_INFO=83214c3;CORECLR_VCS_INFO=b704dce;OS_NAME=Windows;CPU_ARCH=x64;HOSTNAME=WIN11</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\dynlibs_unix.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\dynlibs_win32.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\err_utils.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\filesystem.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\filesystem_unix.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\filesystem_win32.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\ioredirect.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\iosystem_unix.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\iosystem_win32.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\interop_unix.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\interop_win32.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\platform_unix.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\platform_win32.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\streams.cpp" />
+    <ClCompile Include="C:\code-lib\netcoredbg\src\utils\logger.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\code-lib\netcoredbg\build\ZERO_CHECK.vcxproj">
+      <Project>{E325180B-D1EB-36E4-9ABD-A7A6A78B93B2}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\code-lib\netcoredbg\build\src\corguids.vcxproj">
+      <Project>{66723E19-6D41-3A59-9A52-2CAEEC275E0D}</Project>
+      <Name>corguids</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\code-lib\netcoredbg\build\third_party\linenoise-ng\linenoise.vcxproj">
+      <Project>{77F3F057-887A-354F-A96B-FE25C914DA4B}</Project>
+      <Name>linenoise</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

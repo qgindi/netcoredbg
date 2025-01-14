@@ -1,5 +1,20 @@
-# Proposed build directory according to README
-/build/
+# Au
+/.*/
+/docs/
+/packaging/
+/test*/
+/build/*
+!*.vcxproj
+!*.sln
+!/build/src/
+!/build/third_party/
+/build/src/*
+!*.vcxproj
+/build/third_party/*
+!/build/third_party/linenoise-ng/
+/build/third_party/linenoise-ng/*
+!*.vcxproj
+*.bak
 
 # Visual Studio Code
 /.vscode/
