@@ -395,9 +395,11 @@ HRESULT ExceptionBreakpoints::ManagedCallbackException(ICorDebugThread *pThread,
             m_threadsExceptionStatus[tid].m_lastEvent = ExceptionCallbackType::FIRST_CHANCE;
             m_threadsExceptionStatus[tid].m_excModule = excModule;
 
-            if (!CoveredByFilter(ExceptionBreakpointFilter::THROW, excType, ExceptionCategory::CLR) &&
-                !CoveredByFilter(ExceptionBreakpointFilter::THROW_USER_UNHANDLED, excType, ExceptionCategory::CLR))
-                return S_OK;
+            //Au: ignore handled exceptions that don't reach user code
+            return S_OK;
+            //if (!CoveredByFilter(ExceptionBreakpointFilter::THROW, excType, ExceptionCategory::CLR) &&
+            //    !CoveredByFilter(ExceptionBreakpointFilter::THROW_USER_UNHANDLED, excType, ExceptionCategory::CLR))
+            //    return S_OK;
 
             m_threadsExceptionBreakMode[tid] = ExceptionBreakMode::THROW;
             break;
@@ -405,16 +407,17 @@ HRESULT ExceptionBreakpoints::ManagedCallbackException(ICorDebugThread *pThread,
 
         case ExceptionCallbackType::USER_FIRST_CHANCE:
         {
-            // In case we already "THROW" at FIRST CHANCE, don't emit "THROW" event again.
-            auto find = m_threadsExceptionStatus.find(tid);
-            if (find != m_threadsExceptionStatus.end())
-            {
-                m_threadsExceptionStatus[tid].m_lastEvent = ExceptionCallbackType::USER_FIRST_CHANCE;
-                if (find->second.m_excModule.empty())
-                    find->second.m_excModule = excModule;
+            //Au: don't need this code because we ignore FIRST_CHANCE. This code interferes with JumpToHere.
+            //// In case we already "THROW" at FIRST CHANCE, don't emit "THROW" event again.
+            //auto find = m_threadsExceptionStatus.find(tid);
+            //if (find != m_threadsExceptionStatus.end())
+            //{
+            //    m_threadsExceptionStatus[tid].m_lastEvent = ExceptionCallbackType::USER_FIRST_CHANCE;
+            //    if (find->second.m_excModule.empty())
+            //        find->second.m_excModule = excModule;
 
-                return S_OK;
-            }
+            //    return S_OK;
+            //}
 
             m_threadsExceptionStatus[tid].m_lastEvent = ExceptionCallbackType::USER_FIRST_CHANCE;
             m_threadsExceptionStatus[tid].m_excModule = excModule;

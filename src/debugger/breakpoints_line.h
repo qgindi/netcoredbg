@@ -37,6 +37,7 @@ public:
     HRESULT UpdateLineBreakpoint(bool haveProcess, int id, int linenum, Breakpoint &breakpoint);
     HRESULT SetLineBreakpoints(bool haveProcess, const std::string &filename, const std::vector<LineBreakpoint> &lineBreakpoints,
                                std::vector<Breakpoint> &breakpoints, std::function<uint32_t()> getId);
+    HRESULT ResolveLine(const std::string& filename, int line, AuResolvedLine& r); //Au
     HRESULT UpdateBreakpointsOnHotReload(ICorDebugModule *pModule, std::unordered_set<mdMethodDef> &methodTokens, std::vector<BreakpointEvent> &events);
     HRESULT AllBreakpointsActivate(bool act);
     HRESULT BreakpointActivate(uint32_t id, bool act);

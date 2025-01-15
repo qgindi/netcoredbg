@@ -706,6 +706,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\Au.cpp" />
     <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\breakpoint_break.cpp" />
     <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\breakpoint_entry.cpp" />
     <ClCompile Include="C:\code-lib\netcoredbg\src\debugger\breakpoint_hotreload.cpp" />
@@ -791,6 +792,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{77F3F057-887A-354F-A96B-FE25C914DA4B}</Project>
       <Name>linenoise</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\Au.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

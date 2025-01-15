@@ -84,6 +84,8 @@ public:
     virtual HRESULT GetThreads(std::vector<Thread> &threads, bool withNativeThreads = false) = 0;
     virtual HRESULT UpdateLineBreakpoint(int id, int linenum, Breakpoint &breakpoint) = 0;
     virtual HRESULT SetLineBreakpoints(const std::string& filename, const std::vector<LineBreakpoint> &lineBreakpoints, std::vector<Breakpoint> &breakpoints) = 0;
+    virtual HRESULT JumpToHere(const std::string& filename, int line, AuSequencePoint& sp) = 0; //Au
+    virtual HRESULT Test() = 0; //Au
     virtual HRESULT SetFuncBreakpoints(const std::vector<FuncBreakpoint> &funcBreakpoints, std::vector<Breakpoint> &breakpoints) = 0;
     virtual HRESULT SetExceptionBreakpoints(const std::vector<ExceptionBreakpoint> &exceptionBreakpoints, std::vector<Breakpoint> &breakpoints) = 0;
     virtual HRESULT BreakpointActivate(int id, bool act) = 0;

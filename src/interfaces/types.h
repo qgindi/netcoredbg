@@ -547,4 +547,21 @@ enum class EventFormat
     CLI
 };
 
+//Au
+struct AuResolvedLine {
+    int32_t startLine;
+    uint32_t ilOffset;
+    uint32_t methodToken;
+    //uint32_t methodVersion;
+    ULONG64 moduleBase;
+};
+
+//Au
+struct AuSequencePoint {
+    int32_t startLine;
+    int32_t startColumn;
+    int32_t endLine;
+    int32_t endColumn;
+};
+
 } // namespace netcoredbg

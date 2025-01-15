@@ -564,10 +564,15 @@ HRESULT Modules::TryLoadModuleSymbols(ICorDebugModule *pModule, Module &module, 
             }
             else if (Status == CORDBG_E_CANT_SET_TO_JMC)
             {
+                //Au: change message text so humans can understand it
                 if (needJMC)
-                    outputText = "You are debugging a Release build of " + module.name + ". Using Just My Code with Release builds using compiler optimizations results in a degraded debugging experience (e.g. breakpoints will not be hit).";
+                    outputText = "You are debugging optimized " + module.name + " without option 'Debug optimized code'. It results in a degraded debugging experience (e.g. breakpoints will not be hit).";
                 else
-                    outputText = "You are debugging a Release build of " + module.name + ". Without Just My Code Release builds try not to use compiler optimizations, but in some cases (e.g. attach) this still results in a degraded debugging experience (e.g. breakpoints will not be hit).";
+                    outputText = "You are debugging optimized " + module.name + " without option 'Debug optimized code'. In some cases (e.g. attach) it results in a degraded debugging experience (e.g. breakpoints will not be hit).";
+                //if (needJMC)
+                //    outputText = "You are debugging a Release build of " + module.name + ". Using Just My Code with Release builds using compiler optimizations results in a degraded debugging experience (e.g. breakpoints will not be hit).";
+                //else
+                //    outputText = "You are debugging a Release build of " + module.name + ". Without Just My Code Release builds try not to use compiler optimizations, but in some cases (e.g. attach) this still results in a degraded debugging experience (e.g. breakpoints will not be hit).";
             }
         }
 
@@ -593,6 +598,13 @@ HRESULT Modules::TryLoadModuleSymbols(ICorDebugModule *pModule, Module &module, 
         IfFailRet(m_modulesAppUpdate.AddUpdateHandlerTypesForModule(pModule, pMDImport));
 
     return S_OK;
+}
+
+//Au
+HRESULT Modules::OnUnloadModule(ICorDebugModule* pModule, Module &module) {
+    module.path = GetModuleFileName(pModule);
+    GetModuleId(pModule, module.id);
+    return 0;
 }
 
 HRESULT Modules::GetFrameNamedLocalVariable(

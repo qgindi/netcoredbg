@@ -12,7 +12,26 @@ Create and open folder C:\code-lib\netcoredbg\build
 Right-click in the folder, open terminal and run:
 `cmake .. -G "Visual Studio 17 2022" -DDOTNET_DIR="c:\Program Files\dotnet"`
 
-Edit .gitignore. See below (near the end).
+Edit .gitignore. Replace /build/ with:
+```
+# Au
+/.*/
+/docs/
+/packaging/
+/test*/
+/build/*
+!*.vcxproj
+!*.sln
+!/build/src/
+!/build/third_party/
+/build/src/*
+!*.vcxproj
+/build/third_party/*
+!/build/third_party/linenoise-ng/
+/build/third_party/linenoise-ng/*
+!*.vcxproj
+*.bak
+```
 
 Git commit (rclick > TortoiseGit > Commit). Message: "executed cmake; edited .gitignore". Check all files.
 
@@ -32,7 +51,7 @@ Change properties of projects netcoredbg, linenoise and corguids:
 - Linker > Input > Additional dependencies: for corguids.lib and linenoise.lib use $(OutDir).
 - netcoredbg only: Linker > Debugging > Database file: use $(OutDir).
 - Linker > All options > Additional options: clear.
-- If not lazy, everywhere use variables instead of raw paths.
+- If not lazy, everywhere use variables or relative paths instead of raw paths. Optional if the solution path will never change. If will change, VS will not find files; the easiest way to fix it - find-replace path in all files in the `build` dir; don't use VS for it; can use the "Search in files" tool of QM.
 - netcoredbg Post-Build event for x64 and ARM64:
  
 ```
@@ -60,38 +79,19 @@ Add this project to the solution: \src\managed\ManagedPart.csproj. In ManagedPar
 - Set postbuild: `xcopy $(TargetPath) C:\code\au\_\Debugger\ /Y`
 - Build.
 
-Add files from NuGet https://www.nuget.org/packages/Microsoft.Diagnostics.DbgShim.win-x64/arm64:
-- C:\code\au\_\Debugger\x64\dbgshim.dll
-- C:\code\au\_\Debugger\arm64\dbgshim.dll
+Add files from NuGet:
+- C:\code\au\_\Debugger\x64\dbgshim.dll (from Microsoft.Diagnostics.DbgShim.win-x64)
+- C:\code\au\_\Debugger\arm64\dbgshim.dll (from Microsoft.Diagnostics.DbgShim.win-arm64)
 
+Modify source files.
 
+Build, test.
 
----------------
-
-In .gitignore replace /build/ with:
-```
-# Au
-/.*/
-/docs/
-/packaging/
-/test*/
-/build/*
-!*.vcxproj
-!*.sln
-!/build/src/
-!/build/third_party/
-/build/src/*
-!*.vcxproj
-/build/third_party/*
-!/build/third_party/linenoise-ng/
-/build/third_party/linenoise-ng/*
-!*.vcxproj
-*.bak
-```
+Git commit. Message: "Modified source files. Tested everything.".
 
 -----------------
 
-This can be used to see what files are ignored:
+This can be used to see which files are ignored:
 `git ls-files -io --directory --exclude-standard`
 
 The above does not show already tracked files. This can be used to untrack all:

@@ -244,7 +244,8 @@ HRESULT AsyncStepper::SetupStep(ICorDebugThread *pThread, IDebugger::StepType st
     ToRelease<ICorDebugFrame> pFrame;
     IfFailRet(pThread->GetActiveFrame(&pFrame));
     if (pFrame == nullptr)
-        return E_FAIL;
+        //return E_FAIL;
+        return S_FALSE; //Au: setup simple stepper instead of fail
 
     mdMethodDef methodToken;
     IfFailRet(pFrame->GetFunctionToken(&methodToken));

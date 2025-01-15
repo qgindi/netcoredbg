@@ -70,6 +70,7 @@ void BreakBreakpoint::SetLastStoppedIlOffset(ICorDebugProcess *pProcess, const T
 HRESULT BreakBreakpoint::ManagedCallbackBreak(ICorDebugThread *pThread, const ThreadId &lastStoppedThreadId)
 {
     HRESULT Status;
+#if !true //Au: this would disable Debug.Assert etc (Debugger.Break in non-user code).
     ToRelease<ICorDebugFrame> iCorFrame;
     IfFailRet(pThread->GetActiveFrame(&iCorFrame));
 
@@ -86,6 +87,7 @@ HRESULT BreakBreakpoint::ManagedCallbackBreak(ICorDebugThread *pThread, const Th
         if (JMCStatus == FALSE)
             return S_OK;
     }
+#endif
 
     ThreadId threadId(getThreadId(pThread));
 

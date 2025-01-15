@@ -129,6 +129,8 @@ protected:
     HRESULT FindEvalCapableThread(ToRelease<ICorDebugThread> &pThread);
     HRESULT ApplyPdbDeltaAndLineUpdates(const std::string &dllFileName, const std::string &deltaPDB, const std::string &lineUpdates,
                                         std::string &updatedDLL, std::unordered_set<mdTypeDef> &updatedTypeTokens);
+
+    bool ExceptionUnwind(); //Au
 };
 
 class ManagedDebuggerHelpers : public ManagedDebuggerBase
@@ -177,6 +179,9 @@ public:
     HRESULT GetThreads(std::vector<Thread> &threads, bool withNativeThreads = false) override;
     HRESULT UpdateLineBreakpoint(int id, int linenum, Breakpoint &breakpoint) override;
     HRESULT SetLineBreakpoints(const std::string& filename, const std::vector<LineBreakpoint> &lineBreakpoints, std::vector<Breakpoint> &breakpoints) override;
+    HRESULT JumpToHere(const std::string& filename, int line, AuSequencePoint& sp); //Au
+    HRESULT Test(); //Au
+    HRESULT PrintCurrentFunctionTokenAndIP(); //Au
     HRESULT SetFuncBreakpoints(const std::vector<FuncBreakpoint> &funcBreakpoints, std::vector<Breakpoint> &breakpoints) override;
     HRESULT SetExceptionBreakpoints(const std::vector<ExceptionBreakpoint> &exceptionBreakpoints, std::vector<Breakpoint> &breakpoints) override;
     HRESULT BreakpointActivate(int id, bool act) override;

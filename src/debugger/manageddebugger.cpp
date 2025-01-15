@@ -60,6 +60,8 @@
 
 #include "palclr.h"
 
+#include "Au.h"
+
 namespace netcoredbg
 {
 
@@ -276,6 +278,7 @@ HRESULT ManagedDebugger::Attach(int pid)
 
     m_startMethod = StartAttach;
     m_processId = pid;
+    //m_sharedBreakpoints->SetStopAtEntry(true);//Au: CONSIDER: add option to pause at entry (tested, works) or when attached (not tested). May need more testing.
     return RunIfReady();
 }
 
@@ -822,7 +825,7 @@ HRESULT ManagedDebuggerHelpers::TerminateProcess()
         DisableAllBreakpointsAndSteppers();
 
         HRESULT Status;
-        if (SUCCEEDED(Status = m_iCorProcess->Terminate(0)))
+        if (SUCCEEDED(Status = m_iCorProcess->Terminate(0xffffffff))) //Au: exit code 0 -> -1 (like in VS)
         {
             m_processAttachedCV.wait(lockAttachedMutex, [this]{return m_processAttachedState == ProcessAttachedState::Unattached;});
             break;
@@ -964,6 +967,159 @@ HRESULT ManagedDebugger::SetLineBreakpoints(const std::string& filename,
 
     bool haveProcess = HaveDebugProcess();
     return m_sharedBreakpoints->SetLineBreakpoints(haveProcess, filename, lineBreakpoints, breakpoints);
+}
+
+//Au
+static int s_interceptException;
+//Au
+bool ManagedDebuggerBase::ExceptionUnwind() {
+    if (s_interceptException != 1) return false;
+    s_interceptException = 2;
+    return true;
+}
+
+//Au
+static HRESULT _GetModuleBase(ICorDebugFrame* pFrame, UINT64& r) {
+    r = 0;
+    HRESULT Status;
+    ToRelease<ICorDebugFunction> pFunc;
+    IfFailRet(pFrame->GetFunction(&pFunc));
+    ToRelease<ICorDebugModule> pMod;
+    IfFailRet(pFunc->GetModule(&pMod));
+    return pMod->GetBaseAddress(&r);
+}
+
+//Au
+static bool _IsSameFunction(ICorDebugFrame* pFrame, const AuResolvedLine& r) {
+    mdMethodDef mt; UINT64 ma;
+    if (0 == pFrame->GetFunctionToken(&mt)) {
+        //print2("tokens: mtJump=%i mt=%i", r.methodToken, mt);
+        if (mt == r.methodToken && 0 == _GetModuleBase(pFrame, ma) && ma == r.moduleBase) return true;
+    }
+    return false;
+}
+
+//Au
+HRESULT ManagedDebugger::JumpToHere(const std::string& filename, int line, AuSequencePoint& sp)
+{
+    LogFuncEntry();
+
+    HRESULT Status;
+    AuResolvedLine r;
+    IfFailRet(m_sharedBreakpoints->ResolveLine(filename, line, r));
+
+    auto threadId = GetLastStoppedThreadId();
+    bool retry = false;
+g1:
+    {
+        ToRelease<ICorDebugThread> pThread;
+        IfFailRet(m_iCorProcess->GetThread((int)threadId, &pThread));
+        ToRelease<ICorDebugFrame> pFrame;
+        IfFailRet(pThread->GetActiveFrame(&pFrame));
+        bool probablyException = false;
+        if (pFrame == nullptr) {
+            IfFailRet(GetFrameAt(pThread, FrameLevel(0), &pFrame));
+            probablyException = true;
+        }
+        ToRelease<ICorDebugILFrame> pILFrame;
+        IfFailRet(pFrame->QueryInterface(IID_ICorDebugILFrame, (LPVOID*)&pILFrame));
+
+        Status = pILFrame->CanSetIP(r.ilOffset);
+        //print2("CanSetIP 0x%X", Status);
+        if (Status == CORDBG_E_SET_IP_NOT_ALLOWED_ON_EXCEPTION || (Status != 0 && probablyException)) {
+            if (retry) return Status;
+            retry = true;
+
+            //jump to a caller?
+            for (;;) {
+                if (_IsSameFunction(pFrame, r)) break;
+                ToRelease<ICorDebugFrame> old(pFrame.Detach());
+                if (0 != old->GetCaller(&pFrame) || pFrame == nullptr) return CORDBG_E_SET_IP_NOT_ALLOWED_ON_NONLEAF_FRAME;
+            }
+
+            ToRelease<ICorDebugThread2> pThread2;
+            if (0 == pThread->QueryInterface(IID_ICorDebugThread2, (LPVOID*)&pThread2)) {
+                auto hr = pThread2->InterceptCurrentException(pFrame);
+                //print2("InterceptCurrentException 0x%X", hr); //bad: E_INVALIDARG on "throw" in a func if Debug config (Release OK, "unhandled" OK)
+                if (hr == 0) {
+                    s_interceptException = 1;
+                    m_iCorProcess->Continue(0);
+                    //wait for ManagedCallback::ExceptionUnwind (in other thread)
+                    for (int i = 0; i < 100; i++) {
+                        Sleep(15);
+                        if (s_interceptException != 1) {
+                            //print2("s_interceptException %i   i=%i", s_interceptException, i);
+                            if (s_interceptException != 2) break;
+                            s_interceptException = 0;
+                            goto g1;
+                        }
+                    }
+                    s_interceptException = 0;
+                }
+            }
+            Status = CORDBG_E_NONINTERCEPTABLE_EXCEPTION;
+        } else {
+            if (!_IsSameFunction(pFrame, r)) return CORDBG_E_SET_IP_NOT_ALLOWED_ON_NONLEAF_FRAME;
+
+            if (Status == 0) {
+                Status = pILFrame->SetIP(r.ilOffset);
+                if (Status == 0) {
+                    //get statement coordinates to highlight
+                    sp.startLine = sp.endLine = r.startLine;
+                    sp.startColumn = sp.endColumn = 1;
+                    pFrame.Free(); //zombified after SetIP
+                    if (0 == pThread->GetActiveFrame(&pFrame)){
+                        ULONG32 ilOffset;
+                        Modules::SequencePoint msp;
+                        if (SUCCEEDED(m_sharedModules->GetFrameILAndSequencePoint(pFrame, ilOffset, msp)))
+                        {
+                            sp.startLine = msp.startLine;
+                            sp.endLine = msp.endLine;
+                            sp.startColumn = msp.startColumn;
+                            sp.endColumn = msp.endColumn;
+                        }
+                    }
+
+                    return 0;
+                }
+            }
+        }
+
+        return Status;
+        //note: don't use IfFailRet, FAILED and SUCCEEDED. Some error codes are >0.
+    }
+}
+
+//Au
+HRESULT ManagedDebugger::Test()
+{
+
+    return S_OK;
+}
+
+//Au
+HRESULT ManagedDebugger::PrintCurrentFunctionTokenAndIP() {
+    HRESULT Status;
+    ToRelease<ICorDebugThread> pThread;
+    auto threadId = GetLastStoppedThreadId();
+    IfFailRet(m_iCorProcess->GetThread((int)threadId, &pThread));
+    ToRelease<ICorDebugFrame> pFrame;
+    IfFailRet(pThread->GetActiveFrame(&pFrame));
+    if (pFrame == nullptr) return E_FAIL;
+
+    UINT64 ma;
+    _GetModuleBase(pFrame, ma);
+
+    ToRelease<ICorDebugILFrame> pILFrame;
+    IfFailRet(pFrame->QueryInterface(IID_ICorDebugILFrame, (LPVOID*)&pILFrame));
+    mdMethodDef activeMethodToken;
+    IfFailRet(pILFrame->GetFunctionToken(&activeMethodToken));
+    ULONG32 offset; CorDebugMappingResult mr;
+    IfFailRet(pILFrame->GetIP(&offset, &mr));
+
+    print2("Func: ma=%lld token=%i, offset=%i, mr=0x%X", ma, activeMethodToken, offset, mr);
+
+    return S_OK;
 }
 
 HRESULT ManagedDebugger::SetFuncBreakpoints(const std::vector<FuncBreakpoint> &funcBreakpoints, std::vector<Breakpoint> &breakpoints)
@@ -1565,8 +1721,9 @@ HRESULT ManagedDebugger::SetHotReload(bool enable)
 {
     std::lock_guard<Utility::RWLock::Reader> guardProcessRWLock(m_debugProcessRWLock.reader);
 
-    if (m_iCorProcess && m_startMethod == StartAttach)
-        return CORDBG_E_CANNOT_BE_ON_ATTACH;
+    //Au
+    //if (m_iCorProcess && m_startMethod == StartAttach)
+    //    return CORDBG_E_CANNOT_BE_ON_ATTACH;
 
     m_hotReload = enable;
 

@@ -121,6 +121,8 @@ public:
         bool needHotReload,
         std::string &outputText);
 
+    HRESULT OnUnloadModule(ICorDebugModule* pModule, Module &module); //Au
+
     void CleanupAllModules();
 
     HRESULT GetFrameNamedLocalVariable(

@@ -129,6 +129,12 @@ HRESULT Breakpoints::SetLineBreakpoints(bool haveProcess, const std::string& fil
     });
 }
 
+//Au
+HRESULT Breakpoints::ResolveLine(const std::string& filename, int line, AuResolvedLine& r)
+{
+    return m_uniqueLineBreakpoints->ResolveLine(filename, line, r);
+}
+
 HRESULT Breakpoints::SetExceptionBreakpoints(const std::vector<ExceptionBreakpoint> &exceptionBreakpoints, std::vector<Breakpoint> &breakpoints)
 {
     return m_uniqueExceptionBreakpoints->SetExceptionBreakpoints(exceptionBreakpoints, breakpoints, [&]() -> uint32_t

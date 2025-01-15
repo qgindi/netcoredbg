@@ -17,7 +17,13 @@
 #include "interfaces/iprotocol.h"
 #include "utils/utf.h"
 #include "managed/interop.h"
+#include "Au.h"
 
+//static void _LogFuncEntry(const char* s) {
+//    print(s);
+//}
+//#undef LogFuncEntry
+//#define LogFuncEntry() _LogFuncEntry(__FUNCTION__)
 
 namespace netcoredbg
 {
@@ -103,6 +109,7 @@ HRESULT STDMETHODCALLTYPE ManagedCallback::Breakpoint(ICorDebugAppDomain *pAppDo
 HRESULT STDMETHODCALLTYPE ManagedCallback::StepComplete(ICorDebugAppDomain *pAppDomain, ICorDebugThread *pThread,
                                                         ICorDebugStepper *pStepper, CorDebugStepReason reason)
 {
+    //print2("%s %i", __FUNCTION__, reason);
     LogFuncEntry();
     return m_sharedCallbacksQueue->AddCallbackToQueue(pAppDomain, [&]()
     {
@@ -126,7 +133,7 @@ HRESULT STDMETHODCALLTYPE ManagedCallback::Break(ICorDebugAppDomain *pAppDomain,
 HRESULT STDMETHODCALLTYPE ManagedCallback::Exception(ICorDebugAppDomain *pAppDomain, ICorDebugThread *pThread, BOOL unhandled)
 {
     // Obsolete callback
-    LogFuncEntry();
+    //LogFuncEntry();
     return m_sharedCallbacksQueue->ContinueAppDomain(pAppDomain);
 }
 
@@ -274,8 +281,14 @@ HRESULT STDMETHODCALLTYPE ManagedCallback::ExitThread(ICorDebugAppDomain *pAppDo
     m_debugger.m_sharedThreads->Remove(threadId);
 
     m_debugger.m_sharedEvalWaiter->NotifyEvalComplete(pThread, nullptr);
-    if (m_debugger.GetLastStoppedThreadId() == threadId)
+    if (m_debugger.GetLastStoppedThreadId() == threadId) {
         m_debugger.InvalidateLastStoppedThreadId();
+
+        //Au: Workaround for netcoredbg process crash later when calling pStepper->Deactivate() from SimpleStepper::DisableAllSteppers.
+        //https://github.com/Samsung/netcoredbg/issues/151
+        //Never mind: possible memory leak.
+        pThread->AddRef();
+    }
 
     m_debugger.m_sharedBreakpoints->ManagedCallbackExitThread(pThread);
 
@@ -285,7 +298,7 @@ HRESULT STDMETHODCALLTYPE ManagedCallback::ExitThread(ICorDebugAppDomain *pAppDo
 
 HRESULT STDMETHODCALLTYPE ManagedCallback::LoadModule(ICorDebugAppDomain *pAppDomain, ICorDebugModule *pModule)
 {
-    LogFuncEntry();
+    //LogFuncEntry();
 
     Module module;
     std::string outputText;
@@ -320,6 +333,12 @@ HRESULT STDMETHODCALLTYPE ManagedCallback::LoadModule(ICorDebugAppDomain *pAppDo
 HRESULT STDMETHODCALLTYPE ManagedCallback::UnloadModule(ICorDebugAppDomain *pAppDomain, ICorDebugModule *pModule)
 {
     LogFuncEntry();
+
+    //Au
+    Module module;
+    m_debugger.m_sharedModules->OnUnloadModule(pModule, module);
+    m_debugger.pProtocol->EmitModuleEvent(ModuleEvent(ModuleRemoved, module));
+
     return m_sharedCallbacksQueue->ContinueAppDomain(pAppDomain);
 }
 
@@ -391,7 +410,7 @@ HRESULT STDMETHODCALLTYPE ManagedCallback::ExitAppDomain(ICorDebugProcess *pProc
 
 HRESULT STDMETHODCALLTYPE ManagedCallback::LoadAssembly(ICorDebugAppDomain *pAppDomain, ICorDebugAssembly *pAssembly)
 {
-    LogFuncEntry();
+    //LogFuncEntry();
     return m_sharedCallbacksQueue->ContinueAppDomain(pAppDomain);
 }
 
@@ -514,6 +533,8 @@ HRESULT STDMETHODCALLTYPE ManagedCallback::Exception(ICorDebugAppDomain *pAppDom
                                                      ULONG32 nOffset, CorDebugExceptionCallbackType dwEventType, DWORD dwFlags)
 {
     LogFuncEntry();
+    //print2("Exception %i 0x%X", dwEventType, dwFlags);
+
     return m_sharedCallbacksQueue->AddCallbackToQueue(pAppDomain, [&]()
     {
         // pFrame could be neutered in case of evaluation during brake, do all stuff with pFrame in callback itself.
@@ -547,6 +568,13 @@ HRESULT STDMETHODCALLTYPE ManagedCallback::ExceptionUnwind(ICorDebugAppDomain *p
                                                            CorDebugExceptionUnwindCallbackType dwEventType, DWORD dwFlags)
 {
     LogFuncEntry();
+    //print2("ExceptionUnwind %i 0x%X", dwEventType, dwFlags);
+
+	//Au:
+    if (dwEventType == CorDebugExceptionUnwindCallbackType::DEBUG_EXCEPTION_INTERCEPTED) {
+        if (m_debugger.ExceptionUnwind()) return S_OK;
+    }
+
     return m_sharedCallbacksQueue->ContinueAppDomain(pAppDomain);
 }
 

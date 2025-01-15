@@ -17,6 +17,9 @@
 
 #include "utils/logger.h"
 
+#include "utils/utf.h" //Au
+#include <Au.h>
+
 namespace netcoredbg
 {
 
@@ -408,8 +411,8 @@ void MIProtocol::EmitStoppedEvent(const StoppedEvent &event)
     {
         case StopBreakpoint:
         {
-            MIProtocol::Printf("*stopped,reason=\"breakpoint-hit\",thread-id=\"%i\",stopped-threads=\"all\",bkptno=\"%u\",times=\"%u\",frame={%s}\n",
-                int(event.threadId), (unsigned int)event.breakpoint.id, (unsigned int)event.breakpoint.hitCount, frameLocation.c_str());
+            MIProtocol::Printf("*stopped,reason=\"breakpoint-hit\",thread-id=\"%i\",stopped-threads=\"all\",bkptno=\"%u\",times=\"%u\",frame={%s},exception=\"%s\"\n", //Au: ,exception=\"%s\"
+                int(event.threadId), (unsigned int)event.breakpoint.id, (unsigned int)event.breakpoint.hitCount, frameLocation.c_str(), event.exception_message.c_str()); //Au: , event.exception_message.c_str()
             break;
         }
         case StopStep:
@@ -447,7 +450,7 @@ void MIProtocol::EmitStoppedEvent(const StoppedEvent &event)
             return;
     }
 
-    MIProtocol::Printf("(gdb)\n");
+    //MIProtocol::Printf("(gdb)\n"); //Au: removed all (gdb). Not useful, just makes slower.
 }
 
 void MIProtocol::EmitExitedEvent(const ExitedEvent &event)
@@ -455,7 +458,7 @@ void MIProtocol::EmitExitedEvent(const ExitedEvent &event)
     LogFuncEntry();
 
     MIProtocol::Printf("*stopped,reason=\"exited\",exit-code=\"%i\"\n", event.exitCode);
-    MIProtocol::Printf("(gdb)\n");
+    //MIProtocol::Printf("(gdb)\n"); //Au
 }
 
 void MIProtocol::EmitContinuedEvent(ThreadId threadId)
@@ -572,9 +575,17 @@ static HRESULT HandleCommand(std::shared_ptr<IDebugger> &sharedDebugger, Breakpo
         output = "^running";
         return S_OK;
     } },
-    { "exec-interrupt", [&](const std::vector<std::string> &, std::string &output){
+    { "exec-interrupt", [&](const std::vector<std::string> &args, std::string &output){
         HRESULT Status;
-        IfFailRet(sharedDebugger->Pause(ThreadId::AllThreads, EventFormat::Default));
+        //Au: add --thread parameter
+        //  https://github.com/Samsung/netcoredbg/issues/150
+        int tid = ProtocolUtils::GetIntArg(args, "--thread", 0);
+        if (tid != 0) {
+            ThreadId threadId{ tid };
+            IfFailRet(sharedDebugger->Pause(threadId, EventFormat::Default));
+        } else {
+            IfFailRet(sharedDebugger->Pause(ThreadId::AllThreads, EventFormat::Default));
+        }
         output = "^done";
         return S_OK;
     } },
@@ -687,6 +698,21 @@ static HRESULT HandleCommand(std::shared_ptr<IDebugger> &sharedDebugger, Breakpo
         else
             ++i;
 
+#if true //Au: add parameter --not
+        bool not = i < args.size() && args.at(i) == "--not";
+        if (not) i++;
+
+        std::vector<ExceptionBreakpoint> exceptionBreakpoints;
+        auto it = args.begin() + i;
+        exceptionBreakpoints.emplace_back(category, findFilter->second);
+        if (not) exceptionBreakpoints.back().negativeCondition = true;
+        if (*it != "*") {
+            for (; it != args.end(); ++it)
+            {
+                exceptionBreakpoints.back().condition.emplace(*it);
+            }
+        }
+#else //original code
         std::vector<ExceptionBreakpoint> exceptionBreakpoints;
         for (auto it = args.begin() + i; it != args.end(); ++it)
         {
@@ -696,6 +722,7 @@ static HRESULT HandleCommand(std::shared_ptr<IDebugger> &sharedDebugger, Breakpo
                 exceptionBreakpoints.back().condition.emplace(*it);
             // Note, no negativeCondition changes, since MI protocol works in another way.
         }
+#endif
 
         size_t newBpCount = exceptionBreakpoints.size();
         if (newBpCount == 0)
@@ -1019,6 +1046,62 @@ static HRESULT HandleCommand(std::shared_ptr<IDebugger> &sharedDebugger, Breakpo
 
         return S_OK;
     }},
+    //Au
+    { "break-activate", [&](const std::vector<std::string> &args, std::string &output) -> HRESULT {
+        HRESULT Status;
+
+        if (args.size() == 0)
+        {
+            output = "Command requires at least 1 argument";
+            return E_FAIL;
+        }
+
+        bool act = args.at(0) == "true";
+
+        if (args.size() == 1) {
+            IfFailRet(sharedDebugger->AllBreakpointsActivate(act));
+        } else {
+            auto it = args.begin(); 
+            while (++it != args.end())
+            {
+                bool er;
+                int i = ProtocolUtils::ParseInt(*it, er);
+                HRESULT hr = er ? sharedDebugger->BreakpointActivate(i, act) : E_FAIL;
+                if (hr != S_OK) {
+                    output = "Bad breakpoint number";
+                    return hr;
+                }
+            }
+        }
+
+        return S_OK;
+    }},
+    //Au
+    { "jump", [&](const std::vector<std::string> &unmutable_args, std::string &output) -> HRESULT {
+        HRESULT Status = E_FAIL;
+        std::vector<std::string> args = unmutable_args;
+        struct LineBreak lb;
+        if (!ProtocolUtils::ParseBreakpoint(args, lb)) {
+            output = "Unknown jump location format";
+        } else {
+            int line = (int)lb.linenum;
+            AuSequencePoint sp;
+            Status = sharedDebugger->JumpToHere(lb.filename, line, sp);
+            if (Status == 0) {
+                std::ostringstream ss;
+                ss << "sp=" << sp.startLine << "," << sp.endLine << "," << sp.startColumn << "," << sp.endColumn;
+                output = ss.str();
+            } else {
+                output = errormessage(Status);
+                if (Status > 0) Status = EMAKEHR(Status); //would be ^done. Let it be ^error always.
+            }
+        }
+        return Status;
+    } },
+    //Au
+    { "test", [&](const std::vector<std::string> &args, std::string &output) -> HRESULT {
+        return sharedDebugger->Test();
+    } },
     };
 
     auto command_it = commands.find(command);
@@ -1079,7 +1162,7 @@ void MIProtocol::CommandLoop()
 {
     std::string token;
 
-    Printf("(gdb)\n");
+    //Printf("(gdb)\n"); //Au
 
     while (!m_exit)
     {
@@ -1131,14 +1214,14 @@ void MIProtocol::CommandLoop()
                 Printf("%s^error,msg=\"%s\"\n", token.c_str(), MIProtocol::EscapeMIValue(output).c_str());
             }
         }
-        Printf("(gdb)\n");
+        //Printf("(gdb)\n"); //Au
     }
 
     if (!m_exit)
         m_sharedDebugger->Disconnect(); // Terminate debuggee process if debugger ran this process and detach in case debugger was attached to it.
 
     Printf("%s^exit\n", token.c_str());
-    Printf("(gdb)\n");
+    //Printf("(gdb)\n"); //Au
 }
 
 void MIProtocol::Printf(const char *fmt, ...)

@@ -527,6 +527,23 @@ HRESULT LineBreakpoints::SetLineBreakpoints(bool haveProcess, const std::string&
     return S_OK;
 }
 
+//Au
+HRESULT LineBreakpoints::ResolveLine(const std::string& filename, int line, AuResolvedLine& r)
+{
+    ManagedLineBreakpoint bp;
+    bp.linenum = line;
+    bp.endLine = line;
+    unsigned resolved_fullname_index = 0;
+    std::vector<ModulesSources::resolved_bp_t> resolvedPoints;
+    HRESULT Status;
+    IfFailRet(ResolveLineBreakpoint(m_sharedModules.get(), nullptr, bp, filename, resolvedPoints, resolved_fullname_index));
+    auto p = resolvedPoints.begin();
+    r.startLine = p->startLine;
+    r.ilOffset = p->ilOffset;
+    r.methodToken = p->methodToken;
+    return p->iCorModule->GetBaseAddress(&r.moduleBase);
+}
+
 HRESULT LineBreakpoints::UpdateBreakpointsOnHotReload(ICorDebugModule *pModule, std::unordered_set<mdMethodDef> &methodTokens, std::vector<BreakpointEvent> &events)
 {
     std::lock_guard<std::mutex> lock(m_breakpointsMutex);

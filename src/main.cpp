@@ -490,6 +490,18 @@ int
     if (!execFile.empty())
         protocol->SetLaunchCommand(execFile, execArgs);
 
+#ifdef _DEBUG
+    if (pidDebuggee == 1) {
+        STARTUPINFOA si={sizeof(STARTUPINFO)};
+        PROCESS_INFORMATION pi={};
+        if (!CreateProcessA(nullptr, R"(C:\code\Test\Tests\bin\Debug\net8.0-windows\Au.Tests.exe)", nullptr, nullptr, false, 0, nullptr, nullptr, &si, &pi)) return 111;
+        pidDebuggee=pi.dwProcessId;
+        CloseHandle(pi.hProcess);
+        CloseHandle(pi.hThread);
+        Sleep(500);
+    }
+#endif
+
     LOGI("pidDebugee %d", pidDebuggee);
     HRESULT Status;
     if (pidDebuggee != 0 && FAILED(Status = AttachToExistingProcess(debugger.get(), pidDebuggee)))
