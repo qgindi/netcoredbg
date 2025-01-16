@@ -9,6 +9,8 @@
 #include "metadata/attributes.h"
 #include "utils/utf.h"
 
+#include "Au.h"
+
 namespace netcoredbg
 {
 
@@ -83,7 +85,8 @@ HRESULT Steppers::SetupStep(ICorDebugThread *pThread, IDebugger::StepType stepTy
         return E_FAIL;
 
     ULONG32 ilOffset;
-    IfFailRet(m_sharedModules->GetFrameILAndSequencePoint(pFrame, ilOffset, m_StepStartSP));
+    //IfFailRet(m_sharedModules->GetFrameILAndSequencePoint(pFrame, ilOffset, m_StepStartSP));
+    if (FAILED(m_sharedModules->GetFrameILAndSequencePoint(pFrame, ilOffset, m_StepStartSP))) m_StepStartSP.offset = -1; //Au: would fail to step when paused at exception thrown in non-user code
 
     IfFailRet(m_asyncStepper->SetupStep(pThread, stepType));
     if (Status == S_OK) // S_FALSE = setup simple stepper
